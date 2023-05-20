@@ -14,14 +14,13 @@ class FlatIterator:
         while self.my_list:
             try:
                 next_item = next(self.my_list[-1])
-                #  пытаемся получить следующий элемент
+                
             except StopIteration:
                 self.my_list.pop()
-                #  если не получилось, значит итератор пустой
+                
                 continue
             if isinstance(next_item, list):
-                # если следующий элемент оказался списком, то
-                # добавляем его итератор в стек
+                
                 self.my_list.append(iter(next_item))
 
             else:
@@ -44,6 +43,3 @@ def test_3():
         assert flat_iterator_item == check_item
 
     assert list(FlatIterator(list_of_lists_2)) == ['a', 'b', 'c', 'd', 'e', 'f', 'h', False, 1, 2, None, '!']
-
-# if __name__ == '__main__':
-#     test_3()
